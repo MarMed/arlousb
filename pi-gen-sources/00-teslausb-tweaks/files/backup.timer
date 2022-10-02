@@ -1,0 +1,13 @@
+[Unit]
+Description=force sync timer
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+#Execute job if it missed a run due to machine being off
+Persistent=false
+
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target

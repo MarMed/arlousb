@@ -3,6 +3,8 @@ touch "${ROOTFS_DIR}/boot/ssh"
 install -m 755 files/rc.local		"${ROOTFS_DIR}/etc/"
 install -m 666 files/teslausb_setup_variables.conf.sample    "${ROOTFS_DIR}/boot/"
 install -m 666 files/wpa_supplicant.conf.sample    "${ROOTFS_DIR}/boot/"
+install -m 755 files/backup.service		"${ROOTFS_DIR}/etc/systemd/system"
+install -m 755 files/backup.timer	"${ROOTFS_DIR}/etc/systemd/system"
 install -d "${ROOTFS_DIR}/root/bin"
 
 # work around shortcoming in pi-gen that causes ca-certificates to be
@@ -14,6 +16,7 @@ EOF
 on_chroot << EOF
 apt-get remove -y --force-yes --purge triggerhappy bluez alsa-utils
 rm -rf /lib/modules/*-v8+
+systemctl enable backup.timer
 EOF
 
 # Below here is the rest of the stage2 (builds the Stretch lite image)

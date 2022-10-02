@@ -1,0 +1,9 @@
+[Unit]
+Description=run force sync
+
+[Service]
+Type=simple
+ExecStart=/root/bin/force_sync.sh
+
+[Install]
+WantedBy=default.target
