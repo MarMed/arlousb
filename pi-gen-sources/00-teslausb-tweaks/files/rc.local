@@ -101,10 +101,7 @@ enable_wifi
 
 if [ ! `ls -1 /etc/ssh/ssh_host_*_key 2>/dev/null | wc -l ` -gt 0 ];
 then
-  setup_progress "Generating SSH keys."
   dpkg-reconfigure openssh-server
-else
-  setup_progress "SSH keys exist."
 fi
 
 # This begins the Headless Setup loop
