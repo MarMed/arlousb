@@ -349,7 +349,7 @@ function clean_cam_mount {
 
   # Remove files, oldest first, until there is at least 20GB of free space
 
-  (cd "${CAM_MOUNT}"; find . -type f -a \( -path './TeslaCam/*' -o -path './TeslaTrackMode/*' \) -printf '%P\0') > /tmp/rmcandidates.txt
+  (cd "${CAM_MOUNT}"; find . -type f -a \( -path './TeslaCam/*' -o -path './TeslaTrackMode/*' -o -path './arlo/*' \) -printf '%P\0') > /tmp/rmcandidates.txt
   if [ -s /tmp/rmcandidates.txt ]
   then
     (cd "${CAM_MOUNT}"; xargs -a /tmp/rmcandidates.txt -0 ls -cr1) > /tmp/rmcandidatesbytime.txt

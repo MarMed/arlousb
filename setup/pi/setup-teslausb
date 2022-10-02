@@ -63,7 +63,7 @@ function get_script () {
       mount -t tmpfs none "$SOURCE_DIR"
       (
         cd "$SOURCE_DIR"
-        curlwrapper -L "https://github.com/${REPO}/teslausb/archive/${BRANCH}.tar.gz" | tar zxf - --strip-components=1
+        curlwrapper -L "https://github.com/${REPO}/arlousb/archive/${BRANCH}.tar.gz" | tar zxf - --strip-components=1
       )
     fi
   fi
@@ -80,7 +80,7 @@ then
   # source the conf file directly to get REPO, BRANCH or download_sources
   # in case they're set
   source /root/teslausb_setup_variables.conf
-  REPO=${REPO:-marcone}
+  REPO=${REPO:-MarMed}
   BRANCH=${BRANCH:-main-dev}
   get_script "$THISDIR" envsetup.sh setup/pi
 fi
@@ -621,7 +621,7 @@ function diagnose {
       echo "WARNING: /mutable is low on inodes: ${inodes}% used"
     fi
 
-    if [[ "$BRANCH" != "main-dev" || "$REPO" != "marcone" ]]
+    if [[ "$BRANCH" != "main-dev" || "$REPO" != "MarMed" ]]
     then
       echo "WARNING: using $REPO/$BRANCH"
     fi

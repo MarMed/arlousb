@@ -75,7 +75,7 @@ function make_links_for_snapshot {
     ln -sf "${f/$curmnt/$finalmnt}" "$saved/$eventtime"
   done
   # and the same for SentryClips
-  for f in "$curmnt/TeslaCam/SentryClips/"*/*
+  for f in "$curmnt/arlo/"*/*
   do
     #log "linking $f"
     linksnapshotfiletorecents "$f" "$curmnt" "$finalmnt"
