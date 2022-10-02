@@ -10,10 +10,10 @@ This is a streamlined process for setting up the Pi. You'll flash a preconfigure
 
 ## Configure the SD card before first boot of the Pi
 
-1. Flash the [latest image release](https://github.com/marcone/teslausb/releases) using [Etcher](https://www.balena.io/etcher/) or similar.
+1. Flash the [latest image release](https://github.com/MarMed/arlousb/releases) using [Etcher](https://www.balena.io/etcher/) or similar.
 
 1. Mount the card again, and in the `boot` directory create a `teslausb_setup_variables.conf` file to export the same environment variables normally needed for manual setup (including archive info, Wifi, and push notifications (if desired).
-A sample conf file is located in the `boot` folder on the SD card. The latest sample is also available [from GitHub](https://github.com/marcone/teslausb/blob/main-dev/pi-gen-sources/00-teslausb-tweaks/files/teslausb_setup_variables.conf.sample).
+A sample conf file is located in the `boot` folder on the SD card. The latest sample is also available [from GitHub](https://github.com/MarMed/arlousb/blob/main-dev/pi-gen-sources/00-teslausb-tweaks/files/teslausb_setup_variables.conf.sample).
 The sample file contains documentation and suggestions for values.
     >**Note**
     >When creating/editing the configuration file on Windows, ensure that it is saved with the correct extension. It is recommended to disable the "hide extensions for known file types" option in Windows so you can see the full file name.
@@ -58,7 +58,7 @@ The sample file contains documentation and suggestions for values.
     | 4 | Create partition and files to store camera clips/music) |
     | 5 | Setup completed; remounting filesystems as read-only and rebooting |
 
-The Pi should be available for `ssh` at `pi@teslausb.local`, over Wifi (if automatic setup works) or USB networking (if it doesn't). It takes about 5 minutes, or more depending on network speed, etc.  The default password for user `pi@teslausb.local` is `raspberry`.
+The Pi should be available for `ssh` at `pi@arlousb.local`, over Wifi (if automatic setup works) or USB networking (if it doesn't). It takes about 5 minutes, or more depending on network speed, etc.  The default password for user `pi@arlousb.local` is `raspberry`.
 
 If plugged into just a power source, or your car, give it a few minutes until the LED starts pulsing steadily which means the archive loop is running and you're good to go.
 
@@ -66,7 +66,7 @@ You should see in `/boot` the `TESLAUSB_SETUP_FINISHED` and `WIFI_ENABLED` files
 
 ## Security
 
-Given that the Pi contains sensitive information like your home wifi password and possible a Tesla account access token, please consider the following:
+Given that the Pi contains sensitive information like your home wifi password, please consider the following:
 
 1. If WiFi Access Point is configured, ensure it is configured with a strong password. Make it something better than Passw0rd, more than 8 characters. The longer the password the better. See [here](https://en.wikipedia.org/wiki/Password_strength) or [here](https://xkcd.com/936/) for password strength.
 
@@ -78,12 +78,12 @@ Given that the Pi contains sensitive information like your home wifi password an
    reboot
 ```
 
-3. Remember that the Pi contains a configuration file with sensitive information. If your Pi is stolen or you suspect an unauthorized person accessed it, immediately change your Tesla account password (if you configured the Pi to use your Tesla credentials to keep the car awake during archiving) and home wifi password. 
+3. Remember that the Pi contains a configuration file with sensitive information. If your Pi is stolen or you suspect an unauthorized person accessed it, immediately change any password configured and your home wifi password. 
 
 
 ### Troubleshooting
 
-* `ssh` to `pi@teslausb.local` (assuming Wifi came up, or your Pi is connected to your computer via USB) and look at the `/boot/teslausb-headless-setup.log`.
+* `ssh` to `pi@arlousb.local` (assuming Wifi came up, or your Pi is connected to your computer via USB) and look at the `/boot/teslausb-headless-setup.log`.
 * Try `sudo -i` and then run `/etc/rc.local`. The scripts are  fairly resilient to restarting and not re-running previous steps, and will tell you about progress/failure.
 * If Wifi didn't come up:
     * Double-check the SSID and WIFIPASS variables in `teslausb_setup_variables.conf`, and remove `/boot/WIFI_ENABLED`, then booting the SD in your Pi to retry automatic Wifi setup.
@@ -94,7 +94,7 @@ Given that the Pi contains sensitive information like your home wifi password an
 * Try `date` to ensure the system clock is set correctly. If it is too far off, SSL/TLS Authentication will fail, preventing the installation from completing. You can set the date like `date -s "2 JAN 2022 15:04:05"`
 * Try `tail -f /boot/teslausb-headless-setup.log` to watch the logs during installation, which may shed some light on any errors occurring. Press `Ctrl-C` to stop watching logs.
 
-More troubleshooting information in the [wiki](https://github.com/marcone/teslausb/wiki/Troubleshooting)
+More troubleshooting information in the [wiki](https://github.com/MarMed/arlousb/wiki/Troubleshooting)
 
 # Background information
 ## What happens under the covers
@@ -112,4 +112,4 @@ At this point the next boot should start the Dashcam/music drives like normal. I
 
 # Image modification sources
 
-The sources for the image modifications, and instructions, are in the [pi-gen-sources folder](https://github.com/marcone/teslausb/tree/main-dev/pi-gen-sources).
+The sources for the image modifications, and instructions, are in the [pi-gen-sources folder](https://github.com/MarMed/arlousb/tree/main-dev/pi-gen-sources).
