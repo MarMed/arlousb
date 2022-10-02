@@ -99,6 +99,14 @@ fi
 enable_wifi
 # Good to start setup at this point
 
+if [ ! `ls -1 /etc/ssh/ssh_host_*_key 2>/dev/null | wc -l ` -gt 0 ];
+then
+  setup_progress "Generating SSH keys."
+  dpkg-reconfigure openssh-server
+else
+  setup_progress "SSH keys exist."
+fi
+
 # This begins the Headless Setup loop
 # If the FINISHED file does not exist then we start setup. Otherwise passes on to normal loop
 if [ ! -e "/boot/TESLAUSB_SETUP_FINISHED" ]
@@ -136,6 +144,7 @@ then
     BRANCH=${BRANCH:-main-dev}
     # Script doesn't exist, grab it.
     setup_progress "Grabbing main setup file."
+	dpkg-reconfigure openssh-server
     get_script /root/bin setup-teslausb setup/pi
   fi
 
