@@ -1,25 +1,17 @@
-# teslausb
+# arloausb
 
 ## Intro
 
-A Raspberry Pi Zero W, Raspberry Pi Zero 2 W or Raspberry Pi 4 can emulate a USB drive, so can act as a drive for your Tesla to write dashcam footage to. Because the Raspberry Pi has full access to the emulated drive, it can:
+A Raspberry Pi Zero W, Raspberry Pi Zero 2 W or Raspberry Pi 4 can emulate a USB drive, so can act as a drive for your Arlo base station to write camera footage to. Because the Raspberry Pi has full access to the emulated drive, it can:
 * automatically copy the recordings to an archive server when you get home
 * hold both dashcam recordings and music files
-* automatically repair filesystem corruption produced by the Tesla's current failure to properly dismount the USB drives before cutting power to the USB ports
+* automatically repair filesystem corruption
 * serve up a web UI to view or download the recordings
 * retain more than one hour of RecentClips (assuming large enough storage)
 
-This video (not mine) has a nice overview of teslausb and how to install it:
-
-[![teslausb intro and installation](http://img.youtube.com/vi/ETs6r1vKTO8/0.jpg)](http://www.youtube.com/watch?v=ETs6r1vKTO8 "teslausb intro and installation")
 
 
 ## Prerequisites
-
-### Assumptions
-
-* You park in range of your wireless network.
-* Your wireless network is configured with WPA2 PSK access.
 
 ### Hardware
 
@@ -32,7 +24,7 @@ or
 **Note: Of the many varieties of Raspberry Pi available only the Raspberry Pi Zero W, Zero 2 W, and 4 will work with TeslaUSB**.
 
 * A Micro SD card, at least 64 GB in size, and an adapter (if necessary) to connect the card to your computer.
-* A mechanism to connect the Pi to the Tesla: a USB A/Micro B cable for the Pi Zero W, or a USB A/Micro C cable for Pi 4
+* A mechanism to connect the Pi to Arlo base station: a USB A/Micro B cable for the Pi Zero W, or a USB A/Micro C cable for Pi 4
 
 Optional:
 * A case for the Pi Zero. The "Official" case: [Adafruit](https://www.adafruit.com/product/3446) or [Amazon](https://www.amazon.com/gp/product/B06Y593MHV). There are many others to choose from.
@@ -42,7 +34,7 @@ Optional:
 
 ## Installing
 
-To install teslausb, please use the [prebuilt image](https://github.com/marcone/teslausb/releases) and [one step setup instructions](doc/OneStepSetup.md).
+To install arlousb, please use the [prebuilt image](https://github.com/MarMed/arlousb/releases) and [one step setup instructions](doc/OneStepSetup.md).
 
 
 ## Contributing
@@ -52,6 +44,5 @@ For pull requests, please split complex changes into multiple pull requests when
 
 ## Meta
 
-This repo contains steps and scripts originally from [this thread on Reddit]( https://www.reddit.com/r/teslamotors/comments/9m9gyk/build_a_smart_usb_drive_for_your_tesla_dash_cam/)
+This repo contains steps and scripts originally from [teslausb]( [https://www.reddit.com/r/teslamotors/comments/9m9gyk/build_a_smart_usb_drive_for_your_tesla_dash_cam/](https://github.com/marcone/teslausb))
 
-Many people in that thread suggested that the scripts be hosted on GitHub but the author didn't seem interested in making that happen, so GitHub user "cimryan" hosted the scripts on GitHub with the Reddit user's permission.
