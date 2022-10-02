@@ -144,7 +144,6 @@ then
     BRANCH=${BRANCH:-main-dev}
     # Script doesn't exist, grab it.
     setup_progress "Grabbing main setup file."
-	dpkg-reconfigure openssh-server
     get_script /root/bin setup-teslausb setup/pi
   fi
 
