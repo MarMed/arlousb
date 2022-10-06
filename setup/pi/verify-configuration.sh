@@ -99,7 +99,7 @@ function check_available_space_usb () {
 
   if [ "$drive_type" != "disk" ]
   then
-    setup_progress "STOP: The provided drive seems to be a partition. Please specify path to the disk."
+    setup_progress "STOP: The specified drive ($USB_DRIVE) is not a disk (TYPE=$drive_type). Please specify path to the disk."
     exit 1
   fi
 
